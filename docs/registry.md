@@ -49,7 +49,9 @@ pub struct SubscriptionRecord {
 | `get_stats() -> RegistryStats` | anyone | |
 | `get_subscription_record(subscription_id)` | anyone | |
 | `get_all_subscriptions() -> Vec<u64>` | anyone | Oldest first. |
+| `get_all_subscriptions_page(page, limit) -> Result<Vec<u64>, Error>` | anyone | Paginated, oldest first. |
 | `get_active_subscriptions() -> Vec<u64>` | anyone | Oldest first. |
+| `get_active_subscriptions_page(page, limit) -> Result<Vec<u64>, Error>` | anyone | Paginated, oldest first. |
 | `get_writers() -> Writers` | anyone | |
 
 ## Update rules
@@ -91,5 +93,6 @@ index can never reach a state the subscription contract could not:
 | 10 | `AlreadyFinal` |
 | 11 | `Overflow` |
 | 12 | `PlanAlreadyRegistered` |
+| 13 | `PageSizeTooLarge` |
 
 Codes are append-only.
